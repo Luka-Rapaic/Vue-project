@@ -5,7 +5,7 @@
             <div class="flex-container opis">
                 <img :src="jelo.slika">
                 <div>
-                    <h1>{{ language == "SR" ? jelo.ime : jelo.imeEN }}</h1>
+                    <h1>{{jelo.ime}}</h1>
                     <p>{{tekstJela}}</p>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="cena">
-                {{ cenaLabel }}{{ kolicina * jelo.cena[size] }}
+                 Cena: {{ kolicina * jelo.cena[size] }}
             </div>
             <div v-if="errorMessage!=''" class="errorMessage">
                 {{ errorMessage }}
@@ -31,7 +31,7 @@
                 {{ successMessage }}
             </div>
             <div class="flex-container">
-                <button @click="addToBasket()">{{ dodajUKorpuLabel }}</button>
+                <button @click="addToBasket()">Dodaj u korpu</button>
             </div>
         </div>
     </div>
@@ -204,27 +204,15 @@ export default {
             kolicina: 1,
             errorMessage: '',
             successMessage: '',
-            cenaLabel: '',
-            dodajUKorpuLabel: '',
-            language: '',
             tekstJela: ''
         }
     },
     created() {
-        this.language = localStorage.getItem("language");
         this.jelo = JSON.parse(localStorage.getItem(this.$route.params.jelo));
-        this.tekstJela = tekstJela[this.$route.params.jelo][this.language];
+        this.tekstJela = tekstJela[this.$route.params.jelo];
         this.user = localStorage.getItem("user");
         if (this.user != null) {
             this.user = JSON.parse(this.user);
-        }
-        this.language = localStorage.getItem("language");
-        if (this.language == "SR") {
-            this.cenaLabel = "Cena: ";
-            this.dodajUKorpuLabel = "Dodaj u korpu";
-        } else {
-            this.cenaLabel = "Price: ";
-            this.dodajUKorpuLabel = "Add to cart";
         }
     },
     methods: {

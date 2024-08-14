@@ -1,8 +1,8 @@
 <template>
-  <div class="jelo-kartica" v-if="Boolean(language == 'SR' ? jelo.ime.toLowerCase().match(matchTerm.toLowerCase()) : jelo.imeEN.toLowerCase().match(matchTerm.toLowerCase())) || jelo.cena.S <= Number(matchTerm)">
+  <div class="jelo-kartica" v-if="jelo.ime.toLowerCase().match(matchTerm.toLowerCase()) || jelo.cena.S <= Number(matchTerm)">
     <div>
       <img :src="jelo.slika" @click="$router.push('/jelovnik/jelo' + id)">
-      <h1 @click="$router.push('/jelovnik/jelo' + id)">{{language == "SR" ? jelo.ime : jelo.imeEN}}</h1>
+      <h1 @click="$router.push('/jelovnik/jelo' + id)">{{jelo.ime}}</h1>
       <div class="ocena">
         <div class="star" @mouseover=starHover(0) @mouseleave=fillStars() @click=rate(0)><div :class="stars[0]"></div></div>
         <div class="star" @mouseover=starHover(1) @mouseleave=fillStars() @click=rate(1)><div :class="stars[1]"></div></div>
@@ -10,8 +10,7 @@
         <div class="star" @mouseover=starHover(3) @mouseleave=fillStars() @click=rate(3)><div :class="stars[3]"></div></div>
         <div class="star" @mouseover=starHover(4) @mouseleave=fillStars() @click=rate(4)><div :class="stars[4]"></div></div>
         <span>{{jelo.ocena}}/5</span>
-        <span v-if="language=='SR'">Br. ocena: {{jelo.brojOcena}}</span>
-        <span v-if="language=='EN'">Review count: {{jelo.brojOcena}}</span>
+        <span>Br. ocena: {{jelo.brojOcena}}</span>
       </div>
     </div>
   </div>
@@ -108,7 +107,6 @@ export default {
   props: {"id": Number, "matchTerm": String},
   data() {
     return {
-      language: '',
       stars: [null, null, null, null, null],
       jelo: {}
     }
@@ -153,7 +151,6 @@ export default {
     }
   },
   created() {
-    this.language = localStorage.getItem("language");
     let naziv = "jelo" + this.id;
     this.jelo = JSON.parse(localStorage.getItem(naziv));
   },

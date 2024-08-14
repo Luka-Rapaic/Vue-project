@@ -1,20 +1,20 @@
 <template>
     <div class="content-wrapper">
         <div class="welcomeBanner">
-            <h2>{{ welcomeH2 }}</h2>
-            <h1>{{ welcomeH1 }}</h1>
+            <h2>Dobrodošli u restoran</h2>
+            <h1>Noodle palace!</h1>
         </div>
         <div class="article">
             <img src="@/assets/Article1_IMG.png">
             <div>
-                <h1>{{ article1_H1 }}</h1>
-                <p>{{ article1_P1 }}</p>
+                <h1>Otvorene su online porudžbine!</h1>
+                <p>Od danas možete u čarima naših jela uživati i kod kuće, jer smo konačno, na insistiranje svih vas, uveli online porudžbine! Napravite nalog na strani 'Moj nalog', a zatim ćete na strani 'Jelovnik' dobiti mogućnost da dodate jelo u korpu. Srećno jedenje!</p>
             </div>
         </div>
         <div class="article">
             <div>
-                <h1>{{ article2_H1 }}</h1>
-                <p>{{ article2_P1 }}</p>
+                <h1>Možete oceniti jela!</h1>
+                <p>Konačno smo dodali dugo traženu mogućnost ocenjivanja jela. Sada nam možete, direktno, preko sajta, jednim klikom reći 'ovo jelo je divno' ili 'ovo jelo ne valja', te nam dati sugestiju na šta u budućnosti treba da obratimo pažnju, a verujte nam, vaše zadovoljstvo nam je na prvom mestu!</p>
             </div>
             <img src="@/assets/Article2_IMG.png">
         </div>
@@ -100,40 +100,8 @@
 </style>
 
 <script>
-import { tekstPocetna } from '@/main';
-
 export default {
     name: "Home",
-    components: {},
-    data() {
-        return {
-            welcomeH1: '',
-            welcomeH2: '',
-            article1_H1: '',
-            article1_P1: '',
-            article2_H1: '',
-            article2_P1: ''
-        }
-    },
-    created() {
-        if (localStorage.getItem("language") == "SR") {
-            this.setLanguageSerbian();
-        } else {
-            this.setLanguageEnglish();
-        }
-    },
-    methods: {
-        setLanguageSerbian() {
-            this.welcomeH1 = tekstPocetna["WELCOME_H1_SR"];
-            this.welcomeH2 = tekstPocetna["WELCOME_H2_SR"];
-            this.article1_H1 = tekstPocetna["ARTICLE1_H1_SR"];
-            this.article1_P1 = tekstPocetna["ARTICLE1_P1_SR"];
-            this.article2_H1 = tekstPocetna["ARTICLE2_H1_SR"];
-            this.article2_P1 = tekstPocetna["ARTICLE2_P1_SR"];   
-        },
-        setLanguageEnglish() {
-
-        }
-    }
+    components: {}
 }
 </script>

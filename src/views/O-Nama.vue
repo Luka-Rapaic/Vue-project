@@ -1,54 +1,54 @@
 <template>
     <div class="content-wrapper">
         <div class="zastoSmoNajbolji">
-            <h1>{{ whyWeTheBest_h1 }}</h1>
-            <p>{{ whyWeTheBest_p }}</p>
+            <h1>Zašto smo najbolji?</h1>
+            <p>Naš restoran zapošljava svetski poznate kuvare kineske hrane i uživa poverenje deset hiljada posetilaca mesečno. Naš vlasnik, Martin Yan, je autor poznatog TV šoua 'Yan can cook' i osnivač je Yan Can internacionalne škole kulinarstva. Njegovo iskutvo i ekspertiza razlog su za to što se za rezervaciju u našem restoranu mora čekati čak pet meseci.</p>
         </div>
         <div class="zaposleni">
-            <h1>{{ employees_h1 }}</h1>
+            <h1>Naš tim:</h1>
             <div>
                 <img src="@/assets/Employee1.jpeg">
                 <h1>Andrew Wong</h1>
-                <h2>{{ employees_title1 }}</h2>
+                <h2>Kuvar</h2>
             </div>
             <div>
                 <img src="@/assets/Employee2.jpg">
                 <h1>Susanna Foo</h1>
-                <h2>{{ employees_title1 }}</h2>
+                <h2>Kuvar</h2>
             </div>
             <div>
                 <img src="@/assets/Employee3.jpg">
                 <h1>Mei Lin</h1>
-                <h2>{{ employees_title1 }}</h2>
+                <h2>Kuvar</h2>
             </div>
             <div>
                 <img src="@/assets/Employee4.jpg">
                 <h1>Peter Chang</h1>
-                <h2>{{ employees_title1 }}</h2>
+                <h2>Kuvar</h2>
             </div>
             <div>
                 <img src="@/assets/Owner.jpg">
                 <h1>Martin Yan</h1>
-                <h2>{{ employees_title2 }}</h2>
+                <h2>Vlasnik</h2>
             </div>
         </div>
         <div class="kontakt">
-            <h1>{{ contact_h1 }}</h1>
+            <h1>Kontakt</h1>
             <table>
                 <tr>
-                    <td>{{ contact_workingHours }}</td>
+                    <td>Radno vreme:</td>
                     <td>16-02h</td>
                 </tr>
                 <tr>
-                    <td>{{ contact_telephone }}</td>
+                    <td>Telefon:</td>
                     <td>064 9248 529</td>
                 </tr>
                 <tr>
-                    <td>{{ contact_mail }}</td>
+                    <td>Mail adresa:</td>
                     <td>noodlepalace@gmail.com</td>
                 </tr>
                 <tr>
-                    <td>{{ contact_adress }}</td>
+                    <td>Adresa:</td>
                     <td>Cara Uroša 23</td>
                 </tr>
             </table>
@@ -167,46 +167,7 @@
 </style>
 
 <script>
-import { tekstONama } from '@/main';
-
 export default {
-    name: "O-Nama",
-    data() {
-        return {
-            language: '',
-            employees_h1: '',
-            employees_title1: '',
-            employees_title2: '',
-            whyWeTheBest_h1: '',
-            whyWeTheBest_p: '',
-            contact_h1: '',
-            contact_workingHours: '',
-            contact_telephone: '',
-            contact_mail: '',
-            contact_adress: ''
-        }
-    },
-    created() {
-        this.language = localStorage.getItem("language");
-        if (this.language == "SR") this.setLanguageSerbian();
-        else this.setLanguageEnglish();
-    },
-    methods: {
-        setLanguageSerbian() {
-            this.employees_h1 = tekstONama["EMPLOYEES_H1_SR"];
-            this.employees_title1 = tekstONama["EMPLOYEES_TITLE1_SR"];
-            this.employees_title2 = tekstONama["EMPLOYEES_TITLE2_SR"];
-            this.whyWeTheBest_h1 = tekstONama["WHY_WE_ARE_THE_BEST_H1_SR"];
-            this.whyWeTheBest_p = tekstONama["WHY_WE_ARE_THE_BEST_P1_SR"];
-            this.contact_h1 = tekstONama["CONTACT_H1_SR"];
-            this.contact_workingHours = tekstONama["CONTACT_WORKINGHOURS_SR"];
-            this.contact_telephone = tekstONama["CONTACT_TELEPHONE_SR"];
-            this.contact_mail = tekstONama["CONTACT_EMAIL_SR"];
-            this.contact_adress = tekstONama["CONTACT_ADRESS_SR"];
-        },
-        setLanguageEnglish() {
-            
-        }
-    }
+    name: "O-Nama"
 }
 </script>

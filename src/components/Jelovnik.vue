@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="filterResults">
-      <h1>{{ sectionName }}</h1>
+      <h1>{{ sekcija }}</h1>
       <div class="radio-bar">
-        <button class="title">{{ sortingMethod_title }}</button>
-        <button :class="{active: sortBy=='name'?true:false}" @click="sortBySelect('name')">{{ sortingMethod_name }}</button>
-        <button :class="{active: sortBy=='price'?true:false}" @click="sortBySelect('price')">{{ sortingMethod_price }}</button>
+        <button class="title">Sortiraj po:</button>
+        <button :class="{active: sortBy=='name'?true:false}" @click="sortBySelect('name')">nazivu</button>
+        <button :class="{active: sortBy=='price'?true:false}" @click="sortBySelect('price')">ceni</button>
       </div>
-      <input type="text" v-model="searchTerm" :placeholder="search_placeholder" class="search">
+      <input type="text" v-model="searchTerm" placeholder="Pretraži..." class="search">
     </div>
     <div class="jelovnik">
       <JeloKartica v-for="id in listaJela" :key="id" :id="id" :matchTerm="searchTerm"></JeloKartica>
@@ -101,7 +101,6 @@ button.title:hover {
 <script>
 import JeloKartica from "@/components/Jelo-Kartica.vue";
 import { dezerti, glavnaJela, predjela } from "@/main";
-import { tekstJelovnik } from "@/main";
 
 export default {
   name: "Jelovnik",
@@ -111,43 +110,13 @@ export default {
     return {
       listaJela: [],
       sortBy: 'name',
-      searchTerm: '',
-      sectionName: '',
-      sortingMethod_title: '',
-      sortingMethod_name: '', 
-      sortingMethod_price: '',
-      search_placeholder: ''
+      searchTerm: ''
     }
   },
   created() {
-    if (localStorage.getItem("language") == "SR") {
-      this.setLanguageSerbian();
-    } else {
-      this.setLanguageEnglish();
-    }
     this.sortResults();
   },
   methods: {
-    setLanguageSerbian() {
-      switch(this.sekcija) {
-        case 'Predjela':
-          this.sectionName = tekstJelovnik.PREDJELA_SR;
-          break;
-        case 'Glavna jela':
-          this.sectionName = tekstJelovnik.GLAVNAJELA_SR;
-          break;
-        case 'Dezerti':
-          this.sectionName = tekstJelovnik.DEZERTI_SR;
-          break;
-      }
-      this.sortingMethod_title = tekstJelovnik.SORTING_METHOD_TITLE_SR;
-      this.sortingMethod_name = tekstJelovnik.SORTING_METHOD_NAME_SR;
-      this.sortingMethod_price = tekstJelovnik.SORTING_METHOD_PRICE_SR;
-      this.search_placeholder = tekstJelovnik.SEARCH_PLACEHOLDER_SR;
-    },
-    setLanguageEnglish() {
-
-    },
     sortBySelect(choice) {
       this.sortBy = choice;
       this.sortResults();
@@ -156,15 +125,15 @@ export default {
       if (this.sortBy == 'name') {
         switch(this.sekcija) {
           case 'Predjela':
-            this.listaJela = predjela.nameSR;
+            this.listaJela = predjela.name;
             break;
           case 'Glavna jela':
-            this.listaJela = glavnaJela.nameSR;
+            this.listaJela = glavnaJela.name;
             break;
           case 'Dezerti':
-            this.listaJela = dezerti.nameSR;
+            this.listaJela = dezerti.name;
         }
-      } else {
+      } else if (this.sortBy == 'price') {
         switch(this.sekcija) {
           case 'Predjela':
             this.listaJela = predjela.price;

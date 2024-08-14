@@ -1,9 +1,7 @@
 <template>
     <div class="header">
         <div class="logoBar">
-            <span style="color: transparent; float: left; pointer-events: none; user-select: none;"><span>SR</span> | <span>EN</span></span>
             <img src="@/assets/Logo.png" class="logo">
-            <span><span  :class="{active: language}" @click="setLanguage('SR')">SR</span> | <span :class="{active: language==false}" @click="setLanguage('EN')">EN</span></span>
         </div>
         <Meni></Meni>
     </div>
@@ -44,27 +42,6 @@ import Meni from '@/components/Meni';
 
 export default {
     name: "Header",
-    components: {Meni},
-    data() {
-        return {
-            language: true
-        }
-    },
-    created() {
-        let language = localStorage.getItem("language");
-        if (language == null) {
-            localStorage.setItem("language", "SR");
-            this.language = true;
-        } else {
-            if (language == "SR") this.language = true;
-            else this.language = false;
-        }
-    },
-    methods: {
-        setLanguage(choice) {
-            localStorage.setItem("language", choice);
-            window.location.reload();
-        }
-    }
+    components: {Meni}
 }
 </script>
